@@ -24,7 +24,7 @@
   font-size: 22px;
   font-weight: 500;
   color: #1f1f1f;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 .control-btn-group {
@@ -38,7 +38,7 @@
   outline: none;
   cursor: pointer;
   font-weight: 700;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   background-color: rgb(90, 183, 250);
   color: #fff;
 }
@@ -47,7 +47,7 @@
   margin: 0 15px;
   font-size: 14px;
   color: #1f1f1f;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 .remove-btn {

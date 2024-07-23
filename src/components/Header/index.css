@@ -7,7 +7,7 @@
 }
 
 .logo-heading {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 600;
   font-size: 35px;
   color: #1f1f1f;
@@ -20,7 +20,7 @@
 }
 
 .my-orders-text {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 500;
   font-size: 18px;
   color: #585555;
@@ -58,7 +58,7 @@
 .cart-count {
   text-align: center;
   color: #ffff;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 500;
   font-size: 12px;
   margin: 0;

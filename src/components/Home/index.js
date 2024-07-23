@@ -1,25 +1,25 @@
-import {useState, useEffect, useContext} from 'react'
+import { useState, useEffect, useContext } from "react";
 
-import Header from '../Header'
-import DishItem from '../DishItem'
+import Header from "../Header";
+import DishItem from "../DishItem";
 
-import CartContext from '../../context/CartContext'
+import CartContext from "../../context/CartContext";
 
-import './index.css'
+import "./index.css";
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [response, setResponse] = useState([])
-  const [activeCategoryId, setActiveCategoryId] = useState('')
+  const [isLoading, setIsLoading] = useState(true);
+  const [response, setResponse] = useState([]);
+  const [activeCategoryId, setActiveCategoryId] = useState("");
 
-  const {cartList, setRestaurantName} = useContext(CartContext)
+  const { cartList, setRestaurantName } = useContext(CartContext);
 
-  const getUpdatedData = tableMenuList =>
-    tableMenuList.map(eachMenu => ({
+  const getUpdatedData = (tableMenuList) =>
+    tableMenuList.map((eachMenu) => ({
       menuCategory: eachMenu.menu_category,
       menuCategoryId: eachMenu.menu_category_id,
       menuCategoryImage: eachMenu.menu_category_image,
-      categoryDishes: eachMenu.category_dishes.map(eachDish => ({
+      categoryDishes: eachMenu.category_dishes.map((eachDish) => ({
         dishId: eachDish.dish_id,
         dishName: eachDish.dish_name,
         dishPrice: eachDish.dish_price,
@@ -31,42 +31,42 @@ const Home = () => {
         dishType: eachDish.dish_Type,
         addonCat: eachDish.addonCat,
       })),
-    }))
+    }));
 
   const fetchRestaurantApi = async () => {
-    const api = 'https://run.mocky.io/v3/77a7e71b-804a-4fbd-822c-3e365d3482cc'
-    const apiResponse = await fetch(api)
-    const data = await apiResponse.json()
-    const updatedData = getUpdatedData(data[0].table_menu_list)
-    setResponse(updatedData)
-    setRestaurantName(data[0].restaurant_name)
-    setActiveCategoryId(updatedData[0].menuCategoryId)
-    setIsLoading(false)
-  }
+    const api = "https://run.mocky.io/v3/a67edc87-49c7-4822-9cb4-e2ef94cb3099";
+    const apiResponse = await fetch(api);
+    const data = await apiResponse.json();
+    const updatedData = getUpdatedData(data[0].table_menu_list);
+    setResponse(updatedData);
+    setRestaurantName(data[0].restaurant_name);
+    setActiveCategoryId(updatedData[0].menuCategoryId);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    fetchRestaurantApi()
+    fetchRestaurantApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  const onUpdateActiveCategoryIdx = menuCategoryId =>
-    setActiveCategoryId(menuCategoryId)
+  const onUpdateActiveCategoryIdx = (menuCategoryId) =>
+    setActiveCategoryId(menuCategoryId);
 
-  const addItemToCart = () => {}
+  const addItemToCart = () => {};
 
-  const removeItemFromCart = () => {}
+  const removeItemFromCart = () => {};
 
   const renderTabMenuList = () =>
-    response.map(eachCategory => {
+    response.map((eachCategory) => {
       const onClickHandler = () =>
-        onUpdateActiveCategoryIdx(eachCategory.menuCategoryId)
+        onUpdateActiveCategoryIdx(eachCategory.menuCategoryId);
 
       return (
         <li
           className={`each-tab-item ${
             eachCategory.menuCategoryId === activeCategoryId
-              ? 'active-tab-item'
-              : ''
+              ? "active-tab-item"
+              : ""
           }`}
           key={eachCategory.menuCategoryId}
           onClick={onClickHandler}
@@ -78,17 +78,17 @@ const Home = () => {
             {eachCategory.menuCategory}
           </button>
         </li>
-      )
-    })
+      );
+    });
 
   const renderDishes = () => {
-    const {categoryDishes} = response.find(
-      eachCategory => eachCategory.menuCategoryId === activeCategoryId,
-    )
+    const { categoryDishes } = response.find(
+      (eachCategory) => eachCategory.menuCategoryId === activeCategoryId
+    );
 
     return (
       <ul className="m-0 d-flex flex-column dishes-list-container">
-        {categoryDishes.map(eachDish => (
+        {categoryDishes.map((eachDish) => (
           <DishItem
             key={eachDish.dishId}
             dishDetails={eachDish}
@@ -97,14 +97,14 @@ const Home = () => {
           />
         ))}
       </ul>
-    )
-  }
+    );
+  };
 
   const renderSpinner = () => (
     <div className="spinner-container">
       <div className="spinner-border" role="status" />
     </div>
-  )
+  );
 
   return isLoading ? (
     renderSpinner()
@@ -114,7 +114,7 @@ const Home = () => {
       <ul className="m-0 ps-0 d-flex tab-container">{renderTabMenuList()}</ul>
       {renderDishes()}
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

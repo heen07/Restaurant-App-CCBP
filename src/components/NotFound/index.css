@@ -11,7 +11,7 @@
 }
 
 .not-found-container h1 {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 35px;
   font-weight: 600;
   color: #232323;
@@ -25,7 +25,7 @@
   border-radius: 4px;
   background-color: #007bff;
   color: #fff;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 14px;
   font-weight: 500;
 }

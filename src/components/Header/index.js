@@ -1,25 +1,25 @@
-import {useContext} from 'react'
-import {Link, withRouter} from 'react-router-dom'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
-import Cookies from 'js-cookie'
+import { useContext } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import Cookies from "js-cookie";
 
-import CartContext from '../../context/CartContext'
+import CartContext from "../../context/CartContext";
 
-import './index.css'
+import "./index.css";
 
-const Header = props => {
-  const {cartList, restaurantName} = useContext(CartContext)
+const Header = (props) => {
+  const { cartList, restaurantName } = useContext(CartContext);
 
   const onLogout = () => {
-    const {history} = props
-    Cookies.remove('jwt_token')
-    history.replace('/login')
-  }
+    const { history } = props;
+    Cookies.remove("jwt_token");
+    history.replace("/login");
+  };
 
   const renderCartIcon = () => (
     <div className="cart-icon-link">
       <Link to="/cart">
-        <button type="button" className="cart-icon-button" data-testid="cart">
+        <button type="button" className="cart-icon-button">
           <AiOutlineShoppingCart className="cart-icon" />
         </button>
       </Link>
@@ -27,7 +27,7 @@ const Header = props => {
         <p className="m-0 cart-count">{cartList.length}</p>
       </div>
     </div>
-  )
+  );
 
   return (
     <header className="p-4 d-flex flex-row align-items-center nav-header">
@@ -48,7 +48,7 @@ const Header = props => {
         {renderCartIcon()}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default withRouter(Header)
+export default withRouter(Header);

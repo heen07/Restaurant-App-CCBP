@@ -1,21 +1,30 @@
-import {useContext} from 'react'
-import {FaRegTrashAlt} from 'react-icons/fa'
+import { useContext } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
 
-import CartContext from '../../context/CartContext'
+import CartContext from "../../context/CartContext";
 
-import './index.css'
+import "./index.css";
 
-const CartItem = ({cartItemDetails}) => {
-  const {dishId, dishName, dishImage, quantity, dishCurrency, dishPrice} =
-    cartItemDetails
-  const {incrementCartItemQuantity, decrementCartItemQuantity, removeCartItem} =
-    useContext(CartContext)
+const CartItem = ({ cartItemDetails }) => {
+  const {
+    dishId,
+    dishName,
+    dishImage,
+    quantity,
+    dishCurrency,
+    dishPrice,
+  } = cartItemDetails;
+  const {
+    incrementCartItemQuantity,
+    decrementCartItemQuantity,
+    removeCartItem,
+  } = useContext(CartContext);
 
-  const onIncreaseQty = () => incrementCartItemQuantity(dishId)
+  const onIncreaseQty = () => incrementCartItemQuantity(dishId);
 
-  const onDecreaseQty = () => decrementCartItemQuantity(dishId)
+  const onDecreaseQty = () => decrementCartItemQuantity(dishId);
 
-  const onRemoveCartItem = () => removeCartItem(dishId)
+  const onRemoveCartItem = () => removeCartItem(dishId);
 
   return (
     <li className="cart-item-container">
@@ -43,7 +52,7 @@ const CartItem = ({cartItemDetails}) => {
         <FaRegTrashAlt />
       </button>
     </li>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;

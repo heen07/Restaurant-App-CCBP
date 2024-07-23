@@ -1,4 +1,4 @@
-import {createContext} from 'react'
+import { createContext } from "react";
 
 const CartContext = createContext({
   cartList: [],
@@ -7,6 +7,6 @@ const CartContext = createContext({
   removeAllCartItems: () => {},
   incrementCartItemQuantity: () => {},
   decrementCartItemQuantity: () => {},
-})
+});
 
-export default CartContext
+export default CartContext;
