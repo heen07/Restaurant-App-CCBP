@@ -1,6 +1,6 @@
 import './index.css'
 
-const Header = ({cartItems}) => {
+const Header = ({restaurentName, cartItems}) => {
   const getCartItemsCount = () =>
     cartItems.reduce((acc, item) => acc + item.quantity, 0)
 
@@ -24,7 +24,7 @@ const Header = ({cartItems}) => {
 
   return (
     <header className="p-4 d-flex flex-row align-items-center nav-header">
-      <h1 className="m-0 logo-heading">UNI Resto Cafe</h1>
+      <h1 className="m-0 logo-heading">{restaurentName}</h1>
       <div className="d-flex flex-row align-items-center ms-auto">
         <p className="mt-0 mb-0 me-2 d-none d-sm-block my-orders-text">
           My Orders
